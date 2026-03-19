@@ -2,6 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>買取ツール</title>
 
     <style>
@@ -55,7 +58,7 @@
         .amari{color: red;}
     </style>
 </head>
-<body>
+<body style="max-width: 500px; margin: auto; font-family: sans-serif;">
 
 <div class="container">
 
@@ -64,7 +67,8 @@
 <form method="post" action="/">
 
 <p>アイテム名</p>
-<input list="items" name="item" placeholder="アイテムを検索">
+<input list="items" name="item" placeholder="アイテムを検索"
+    style="width: 100%; padding: 10px; font-size:16x;">
 
 <datalist id="items">
     {% for item in items %}
@@ -73,9 +77,11 @@
 </datalist>
 
 <p>個数</p>
-<input type="number" name="kosuu" min="1" step="1">
+<input type="number" name="kosuu" min="1" step="1"
+    style="width: 100%; padding: 10px; font-size:16x;">
 
-<input type="submit" value="計算">
+<input type="submit" value="計算"
+    style="width: 100%; padding: 12px; font-size:18x;">
 
 </form>
 
