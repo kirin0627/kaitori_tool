@@ -84,17 +84,41 @@
 
 <h3>計算結果</h3>
 
-<div class="container">
 {% for h in history %}
-<p>
-    {{ h.item }}:
-    {{ h.kosuu }}個
-    買取価格 <span class="price">{{ h.enn }}円</span>
-    買取不可 <span class="amari">{{ h.amari }}個</span>
-</p>
+    <div style="
+    background:#eeeeee;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    ">
+
+    <!--アイテム名-->
+    <div style="font-weight:bold; font-size: 18px; margin-bottom: 5px;">
+        {{ h.item }}
+    </div>
+
+    <!--個数-->
+    <div>
+        個数:{{ h.kosuu }}個
+    </div>
+
+    <!--買取価格-->
+    <div>
+        買取価格:
+        <span style="color:blue; font-weight:bold;">
+            {{ h.enn }}円
+        </span>
+    </div>
+
+    <!--買取不可-->
+    <div>
+        買取不可:
+        <span style="color:red; font-weight:bold;">
+            {{ h.amari }}個
+        </span>
+    </div>
+</div>
 {% endfor %}
-</div>
-</div>
 
 </body>
 </html>
