@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>買取ツール</title>
+
+    <style>
+        body{
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{text-align: center;}
+
+        p{margin: 5px 0;}
+
+        input{
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"]{
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover{background: #0056b3;}
+
+        .error{color: red;}
+
+        .histoory{
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .price{color: blue;}
+
+        .amari{color: red;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>アイテム価格計算機</h1>
+
+<form method="post" action="/">
+
+<p>アイテム名</p>
+<input list="items" name="item" placeholder="アイテムを検索">
+
+<datalist id="items">
+    {% for item in items %}
+    <option value="{{ item }}">
+    {% endfor %}
+</datalist>
+
+<p>個数</p>
+<input type="number" name="kosuu" min="1" step="1">
+
+<input type="submit" value="計算">
+
+</form>
+
+<!-- エラー表示 -->
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+<hr>
+
+<h3>計算結果</h3>
+
+<div class="container">
+{% for h in history %}
+<p>
+    {{ h.item }}:
+    {{ h.kosuu }}個
+    買取価格 <span class="price">{{ h.enn }}円</span>
+    買取不可 <span class="amari">{{ h.amari }}個</span>
+</p>
+{% endfor %}
+</div>
+</div>
+
+</body>
+</html>
